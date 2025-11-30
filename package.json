@@ -6,19 +6,30 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "json-server": "json-server --watch json-server/db.json --port 4000",
+    "test": "jest"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.11.0",
     "next": "16.0.6",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.6",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^30.2.0",
+    "json-server": "^1.0.0-beta.3",
+    "ts-jest": "^29.4.5",
     "typescript": "^5"
   }
 }

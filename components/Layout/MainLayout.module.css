@@ -1,0 +1,80 @@
+.root {
+    min-height: 100vh;
+    background: #000;
+    color: #fff;
+    font-family: system-ui, sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Wallpaper */
+.bg {
+    position: fixed;
+    inset: 0;
+    background-image: url("/wallpaper.jpg");
+    background-size: 150% auto;
+    background-position: 90% bottom;
+    background-repeat: no-repeat;
+    opacity: 0.65;
+}
+
+/* Green bar */
+.ground {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 120px;
+    background: linear-gradient(#90d02c, #6db51f 60%, #4a8f10);
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+/* Logo */
+.header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: right;
+    padding: 1rem 0 0.5rem;
+}
+
+/* Container */
+.main {
+    position: relative;
+    z-index: 3;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .bg {
+        background-size: cover;
+        background-position: 55% bottom;
+    }
+
+    .ground {
+        height: 55px;
+        border-top-left-radius: 22px;
+        border-top-right-radius: 22px;
+    }
+
+    .header {
+        padding: 1rem 0 0.2rem;
+        justify-content: center;
+
+        img {
+            width: 85%;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+
+    .main {
+        padding: 1.5rem 1rem 3rem;
+    }
+}

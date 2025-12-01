@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Rick and Morty – Test Técnico
 
-## Getting Started
+Aplicación desarrollada en Next.js 16 (App Router) para visualizar personajes de la API pública de Rick and Morty y administrar una lista de favoritos persistida con JSON Server + Redux Toolkit.
 
-First, run the development server:
+Incluye:
 
-```bash
+-Vista desktop y mobile basada en el look & feel solicitado.
+
+-Filtro en tiempo real por nombre.
+
+-Selección de personaje.
+
+-Like / Unlike en tarjetas.
+
+-Tab Favs con overlay y eliminación de favoritos.
+
+-Persistencia con JSON Server.
+
+-Estado global con Redux Toolkit.
+
+-Pruebas unitarias con Jest y Testing Library.
+
+## Tecnologías utilizadas
+
+Next.js 16 (App Router)
+
+React 19 / Client Components
+
+TypeScript
+
+CSS Modules
+
+Redux Toolkit
+
+JSON Server
+
+Jest + Testing Library
+
+## Instalación
+git clone https://github.com/<TU_USUARIO>/<TU_REPO>.git
+cd <TU_REPO>
+npm install
+
+## Json Server
+cp json-server/db.example.json json-server/db.json
+npm run json-server
+http://localhost:4000/favorites
+
+## Ejecutar Next.js
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Prueba unitarias
+npm test
+-- favoritesSlice.test.ts
+Prueba el reducer de Redux Toolkit
+Estado inicial.
+Agregar favorito.
+Eliminar favorito.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ¿Qué es lo que más me gustó de mi desarrollo?
+Disfruté trabajar con un UI reactivo: selección de personaje, favoritos y la versión móvil. Igual hace mucho que no trabajaba con Redux Toolkit con JSON Server, y me gustó haber logrado una experiencia realista sin necesidad de un backend formal.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Si hubiera tenido más tiempo, ¿qué habría mejorado?
+- Una paginación completada
+- Más transiciones y animaciones en la interfaz
+- Un mejor manejo de errores
 
-## Learn More
+## Paint point y solución
+JSON Server generaba IDs propios al agregar un favorito, lo cual causaba que al eliminar un favorito no funcionara correctamente, ya que intentaba borrar usando el ID del personaje (API), pero json-server estaba usando IDs distintos.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Solución: Ajusté el modelo de favorito para que JSON Server genere su propio id, y el personaje se identifique con characterId

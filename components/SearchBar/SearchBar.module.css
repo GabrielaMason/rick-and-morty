@@ -1,4 +1,6 @@
 .wrapper {
+    width: 50%;
+    margin: 0 auto;
     background: #151515;
     border-radius: 999px;
     padding: 0.25rem 0.5rem;

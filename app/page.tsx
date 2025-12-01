@@ -6,6 +6,7 @@ import { Character } from "@/services/rickAndMortyApi";
 import CharacterList from "@/components/CharacterList/CharacterList";
 import CharacterDetail from "@/components/CharacterDetail/CharacterDetail";
 import SearchBar from "@/components/SearchBar/SearchBar";
+import FavoritesBar from "@/components/FavoritesBar/FavoritesBar";
 
 export default function Home() {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -65,6 +66,9 @@ export default function Home() {
               selectedId={selected?.id}
               onSelect={setSelected}
             />
+          </div>
+          <div className={styles.favsWrapper}>
+            <FavoritesBar />
           </div>
         </section>
       </div>

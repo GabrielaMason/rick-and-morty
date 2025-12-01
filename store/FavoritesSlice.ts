@@ -20,7 +20,6 @@ const initialState: FavoritesState = {
     error: null
 };
 
-// Load favorites in JSON Server
 export const loadFavorites = createAsyncThunk(
     "favorites/load",
     async () => {
@@ -29,21 +28,19 @@ export const loadFavorites = createAsyncThunk(
     }
 );
 
-// Add favorites into JSON Server
 export const addToFavorites = createAsyncThunk(
     "favorites/add",
-    async (character: Favorite) => {
-        const data = await addFavorite(character);
+    async (character: { id: number; name: string; image: string }) => {
+        const data = await addFavorite(character as any);
         return data;
     }
 );
 
-// Eliminate favorites in JSON Server
 export const removeFromFavorites = createAsyncThunk(
     "favorites/remove",
-    async (id: number) => {
-        await removeFavorite(id);
-        return id;
+    async (favoriteId: number) => {
+        await removeFavorite(favoriteId);
+        return favoriteId;
     }
 );
 
@@ -71,9 +68,8 @@ const favoritesSlice = createSlice({
             .addCase(
                 addToFavorites.fulfilled,
                 (state, action: PayloadAction<Favorite>) => {
-                    // Prevent duplicates
                     const exists = state.items.some(
-                        (fav) => fav.id === action.payload.id
+                        (fav) => fav.characterId === action.payload.characterId
                     );
                     if (!exists) {
                         state.items.push(action.payload);

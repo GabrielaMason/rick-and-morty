@@ -14,12 +14,15 @@ interface Props {
 export default function CharacterCard({ character, isSelected, onClick }: Props) {
   const dispatch = useAppDispatch();
   const favorites = useAppSelector((state) => state.favorites.items);
-  const isFavorite = favorites.some((fav) => fav.id === character.id);
+  const existingFavorite = favorites.find(
+    (fav) => fav.characterId === character.id
+  );
+  const isFavorite = Boolean(existingFavorite);
 
   const handleToggleFavorite = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (isFavorite) {
-      dispatch(removeFromFavorites(character.id));
+    if (isFavorite && existingFavorite) {
+      dispatch(removeFromFavorites(existingFavorite.id));
     } else {
       dispatch(addToFavorites(character));
     }
